@@ -1,6 +1,6 @@
 package spittr.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;

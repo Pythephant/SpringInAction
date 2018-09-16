@@ -10,16 +10,16 @@ public class Spittle {
 	private final String message;
 	private final Date time;
 	private Double latitude;
-	private Double longtitude;
-	
+	private Double longitude;
+
 	public Spittle(String message, Date time, Double latitude, Double longtidue) {
 		this.id = null;
 		this.message = message;
 		this.time = time;
 		this.latitude = latitude;
-		this.longtitude = longtidue;
+		this.longitude = longtidue;
 	}
-	
+
 	public Spittle(String message, Date time) {
 		this(message, time, null, null);
 	}
@@ -40,18 +40,18 @@ public class Spittle {
 		return latitude;
 	}
 
-	public Double getLongtitude() {
-		return longtitude;
+	public Double getLongitude() {
+		return longitude;
 	}
-	
+
 	@Override
 	public boolean equals(Object that) {
-		return EqualsBuilder.reflectionEquals(this, that, "id","time");
+		return EqualsBuilder.reflectionEquals(this, that, "id", "time");
 	}
-	
+
 	@Override
 	public int hashCode() {
-		return HashCodeBuilder.reflectionHashCode(this, "id","time");
+		return HashCodeBuilder.reflectionHashCode(this, "id", "time");
 	}
-	
+
 }
