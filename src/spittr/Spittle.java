@@ -24,6 +24,13 @@ public class Spittle {
 		this(message, time, null, null);
 	}
 
+	// constructor for test use , input the id field from 0 to max;
+	public Spittle(Long id, String message, Date time) {
+		this.id = id;
+		this.message = message;
+		this.time = time;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -52,6 +59,11 @@ public class Spittle {
 	@Override
 	public int hashCode() {
 		return HashCodeBuilder.reflectionHashCode(this, "id", "time");
+	}
+
+	@Override
+	public String toString() {
+		return "Spittle id(" + id + "),createAt:" + time + ", positoin:" + latitude + "," + longitude;
 	}
 
 }

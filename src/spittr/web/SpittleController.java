@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import spittr.data.SpittleRepository;
 
@@ -12,6 +13,8 @@ import spittr.data.SpittleRepository;
 @RequestMapping("/spittles")
 public class SpittleController {
 	private SpittleRepository spittleRepository;
+	//the trick to create the Max Long String in compile time, as a constant
+	private static final String MAX_LONG_AS_STRING =Long.MAX_VALUE+"";
 
 	@Autowired
 	public SpittleController(SpittleRepository spittleRepository) {
@@ -19,8 +22,9 @@ public class SpittleController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String spittles(Model model) {
-		model.addAttribute(spittleRepository.findSpittles(Long.MAX_VALUE, 20));
+	public String spittles(@RequestParam(value = "max", defaultValue=MAX_LONG_AS_STRING) Long max,
+			@RequestParam(value = "count", defaultValue = "20") int count, Model model) {
+		model.addAttribute(spittleRepository.findSpittles(max, count));
 		return "spittles";
 	}
 }
