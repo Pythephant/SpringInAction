@@ -13,7 +13,6 @@ public class SimpleSpitterRepository implements SpitterRepository {
 
 	@Override
 	public void save(Spitter spitter) {
-		System.out.println(spitter);
 		users.put(spitter.getUsername(), spitter);
 	}
 
