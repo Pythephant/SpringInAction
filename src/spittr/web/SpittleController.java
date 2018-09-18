@@ -13,8 +13,8 @@ import spittr.data.SpittleRepository;
 @RequestMapping("/spittles")
 public class SpittleController {
 	private SpittleRepository spittleRepository;
-	//the trick to create the Max Long String in compile time, as a constant
-	private static final String MAX_LONG_AS_STRING =Long.MAX_VALUE+"";
+	// the trick to create the Max Long String in compile time, as a constant
+	private static final String MAX_LONG_AS_STRING = Long.MAX_VALUE + "";
 
 	@Autowired
 	public SpittleController(SpittleRepository spittleRepository) {
@@ -22,9 +22,15 @@ public class SpittleController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String spittles(@RequestParam(value = "max", defaultValue=MAX_LONG_AS_STRING) Long max,
+	public String spittles(@RequestParam(value = "max", defaultValue = MAX_LONG_AS_STRING) Long max,
 			@RequestParam(value = "count", defaultValue = "20") int count, Model model) {
 		model.addAttribute(spittleRepository.findSpittles(max, count));
 		return "spittles";
+	}
+
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public String showSpittle(@RequestParam(value = "spittle_id") long spittleId, Model model) {
+		model.addAttribute(spittleRepository.findOne(spittleId));
+		return "spittle";
 	}
 }

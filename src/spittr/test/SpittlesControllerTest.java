@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hamcrest.core.IsCollectionContaining;
 import org.junit.Test;
-import org.junit.internal.matchers.IsCollectionContaining;
 import org.mockito.Mockito;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -38,17 +38,21 @@ public class SpittlesControllerTest {
 						IsCollectionContaining.hasItems(expectedSpittleList.toArray())));
 
 	}
-	
+
 	@Test
-	public void showPagedSpittles() throws Exception{
+	public void showPagedSpittles() throws Exception {
 		List<Spittle> expectedList = createSpittleList(50);
 		SpittleRepository mockSpitlleRepo = Mockito.mock(SpittleRepository.class);
 		Mockito.when(mockSpitlleRepo.findSpittles(239800, 50)).thenReturn(expectedList);
-		
+
 		SpittleController controller = new SpittleController(mockSpitlleRepo);
-		MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).setSingleView(new InternalResourceView("/WEB-INF/views/spittles.jsp")).build();
-		
-		mockMvc.perform(MockMvcRequestBuilders.get("/spittles?max=239800&count=50")).andExpect(MockMvcResultMatchers.view().name("spittles")).andExpect(MockMvcResultMatchers.model().attributeExists("spittleList")).andExpect(MockMvcResultMatchers.model().attribute("spittleList", IsCollectionContaining.hasItems(expectedList.toArray())));
+		MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller)
+				.setSingleView(new InternalResourceView("/WEB-INF/views/spittles.jsp")).build();
+
+		mockMvc.perform(MockMvcRequestBuilders.get("/spittles?max=239800&count=50"))
+				.andExpect(MockMvcResultMatchers.view().name("spittles"))
+				.andExpect(MockMvcResultMatchers.model().attributeExists("spittleList")).andExpect(MockMvcResultMatchers
+						.model().attribute("spittleList", IsCollectionContaining.hasItems(expectedList.toArray())));
 	}
 
 	private List<Spittle> createSpittleList(int count) {

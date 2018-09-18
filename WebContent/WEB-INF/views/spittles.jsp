@@ -7,6 +7,7 @@
 	href="<c:url value="/resources/style.css" />">
 </head>
 <body>
+	<h1>The Spittles.jsp</h1>
 	<c:forEach items="${spittleList}" var="spittle">
 		<li id="spittle_<c:out value="spittle.id"/>">
 			<div class="spittleMessage">
