@@ -3,22 +3,29 @@ package spittr;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 public class Spitter {
+
+	
 
 	private Long id;
 
 	@NotNull
-	@Size(min = 5, max = 16)
+	@Size(min=5, max=16)
 	private String username;
 
 	@NotNull
-	@Size(min = 5, max = 25)
+	@Size(min=5, max=25)
 	private String password;
 
 	@NotNull
-	@Size(min=2, max = 30)
+	@Size(min=2, max=30)
 	private String firstName;
-
+	
+	@NotNull
+	@Size(min=2, max=30)
 	private String lastName;
 
 	public Spitter() {
@@ -30,6 +37,14 @@ public class Spitter {
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -74,4 +89,14 @@ public class Spitter {
 				+ System.getProperty("line.separator") + "FirstName:" + this.firstName
 				+ System.getProperty("line.separator") + "LastName:" + this.lastName;
 	}
+	
+	 @Override
+	  public boolean equals(Object that) {
+	    return EqualsBuilder.reflectionEquals(this, that, "firstName", "lastName", "username", "password", "email");
+	  }
+	  
+	  @Override
+	  public int hashCode() {
+	    return HashCodeBuilder.reflectionHashCode(this, "firstName", "lastName", "username", "password", "email");
+	  }
 }
