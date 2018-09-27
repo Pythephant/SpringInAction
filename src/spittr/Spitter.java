@@ -5,25 +5,26 @@ import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.springframework.context.annotation.PropertySource;
 
 public class Spitter {
 
 	private Long id;
 
 	@NotNull
-	@Size(min = 5, max = 16, message = "${username.size}")
+	@Size(min = 5, max = 16, message = "{username.size}")
 	private String username;
 
 	@NotNull
-	@Size(min = 5, max = 25, message = "${password.size}")
+	@Size(min = 5, max = 25, message = "{password.size}")
 	private String password;
 
 	@NotNull
-	@Size(min = 2, max = 30, message = "${firstName.size}")
+	@Size(min = 2, max = 30, message = "{firstName.size}")
 	private String firstName;
 
 	@NotNull
-	@Size(min = 2, max = 30, message = "${lastName.size}")
+	@Size(min = 2, max = 30, message = "{lastName.size}")
 	private String lastName;
 
 	public Spitter() {
