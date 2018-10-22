@@ -6,7 +6,7 @@
 <title>Register of Spittr</title>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/style.css" />">
-	
+
 </head>
 <body>
 	<h1>Register</h1>
@@ -24,18 +24,18 @@
 	 	this is the SpringForm tag using to display the Annotation validation
 	-->
 	<sf:form method="POST" commandName="spitter">
-		<sf:errors path="*" element="div" cssClass="errors"/>
-		<sf:label path="firstName" cssErrorClass="error">FirstName:</sf:label>	<sf:input path="firstName" cssErrorClass="error"/>
-		<!--<sf:errors path="firstName" cssClass="error"/> -->
+		<%-- <sf:errors path="*" element="div" cssClass="errors"/> --%>
+		FirstName:<sf:input path="firstName" />
+		<sf:errors path="firstName" cssClass="error" />
 		<br>
 		LastName:	<sf:input path="lastName" />
-		<sf:errors path="lastName" cssClass="error"/>
+		<sf:errors path="lastName" cssClass="error" />
 		<br>
 		UserName:	<sf:input path="username" />
-		<sf:errors path="username" cssClass="error"/>
+		<sf:errors path="username" cssClass="error" />
 		<br>
 		Password:	<sf:password path="password" />
-		<sf:errors path="password" cssClass="error"/>
+		<sf:errors path="password" cssClass="error" />
 		<br>
 		<input type="submit" value="Register">
 	</sf:form>

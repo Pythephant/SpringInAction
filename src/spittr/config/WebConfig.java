@@ -21,14 +21,14 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 @ComponentScan("spittr.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-	/*@Bean
-	public ViewResolver viewResolver() {
-		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("/WEB-INF/views/");
-		resolver.setSuffix(".jsp");
-		resolver.setExposeContextBeansAsAttributes(true);
-		return resolver;
-	}*/
+//	@Bean
+//	public ViewResolver viewResolver() {
+//		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//		resolver.setPrefix("/WEB-INF/views/");
+//		resolver.setSuffix(".jsp");
+//		resolver.setExposeContextBeansAsAttributes(true);
+//		return resolver;
+//	}
 
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -52,14 +52,15 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public TilesConfigurer tilesConfigurer() {
 		TilesConfigurer tiles = new TilesConfigurer();
-		tiles.setDefinitions("/WEB-INF/**/tiles.xml");
+		tiles.setDefinitions("/WEB-INF/layout/tiles.xml");
 		tiles.setCheckRefresh(true);
 		return tiles;
 	}
 
 	@Bean
 	public TilesViewResolver viewResolver() {
-		return new TilesViewResolver();
+		TilesViewResolver resolver = new TilesViewResolver();
+		return resolver;
 	}
 
 }
