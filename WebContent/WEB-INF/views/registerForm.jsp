@@ -23,7 +23,8 @@
 	<!-- 
 	 	this is the SpringForm tag using to display the Annotation validation
 	-->
-	<sf:form method="POST" commandName="spitter">
+	<sf:form method="POST" commandName="spitter"
+		enctype="multipart/form-data">
 		<%-- <sf:errors path="*" element="div" cssClass="errors"/> --%>
 		FirstName:<sf:input path="firstName" />
 		<sf:errors path="firstName" cssClass="error" />
@@ -37,6 +38,10 @@
 		Password:	<sf:password path="password" />
 		<sf:errors path="password" cssClass="error" />
 		<br>
+		<label>Profile Picture</label>
+		<input type="file" name="profilePicture"
+			accept="image/jepg,image/png,image/gif" />
+		<br />
 		<input type="submit" value="Register">
 	</sf:form>
 

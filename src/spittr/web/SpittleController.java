@@ -36,15 +36,16 @@ public class SpittleController {
 		addSpittleToModel(model, spittleRepository.findOne(spittleId));
 		return "spittle";
 	}
-	
-	@RequestMapping(value="/{spittleId}", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/{spittleId}", method = RequestMethod.GET)
 	public String spittle(@PathVariable long spittleId, Model model) {
 		addSpittleToModel(model, spittleRepository.findOne(spittleId));
 		return "spittle";
 	}
-	
+
 	private void addSpittleToModel(Model model, Spittle spittle) {
-		if(spittle!=null)
-			model.addAttribute(spittle);
+		if (spittle == null)
+			throw new SpittleNotFoundException();
+		model.addAttribute(spittle);
 	}
 }

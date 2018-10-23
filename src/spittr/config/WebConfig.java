@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -21,14 +23,14 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 @ComponentScan("spittr.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-//	@Bean
-//	public ViewResolver viewResolver() {
-//		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-//		resolver.setPrefix("/WEB-INF/views/");
-//		resolver.setSuffix(".jsp");
-//		resolver.setExposeContextBeansAsAttributes(true);
-//		return resolver;
-//	}
+	// @Bean
+	// public ViewResolver viewResolver() {
+	// InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+	// resolver.setPrefix("/WEB-INF/views/");
+	// resolver.setSuffix(".jsp");
+	// resolver.setExposeContextBeansAsAttributes(true);
+	// return resolver;
+	// }
 
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -61,6 +63,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	public TilesViewResolver viewResolver() {
 		TilesViewResolver resolver = new TilesViewResolver();
 		return resolver;
+	}
+
+	@Bean
+	public MultipartResolver multipartResolver() {
+		return new StandardServletMultipartResolver();
 	}
 
 }

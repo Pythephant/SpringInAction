@@ -19,4 +19,23 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/registerForm.jsp" />
 	</definition>
+	<definition name="profile" extends="base">
+		<put-attribute name="body"
+			value="/WEB-INF/views/profile.jsp" />
+	</definition>
+	<definition name="spittles" extends="base">
+		<put-attribute name="body"
+			value="/WEB-INF/views/spittles.jsp" />
+	</definition>
+
+	<definition name="spittle" extends="base">
+		<put-attribute name="body"
+			value="/WEB-INF/views/spittle.jsp"/>
+	
+	</definition>
+	<definition name="multipartEmpty" extends="base">
+		<put-attribute name="body"
+			value="/WEB-INF/views/error_multipartEmpty.jsp"/>
+	
+	</definition>
 </tiles-definitions>
