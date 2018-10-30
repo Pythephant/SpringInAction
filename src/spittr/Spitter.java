@@ -38,6 +38,10 @@ public class Spitter {
 		this.lastName = lastName;
 	}
 
+	public Spitter(String username, String password, String firstName, String lastName) {
+		this(null, username, password, firstName, lastName);
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -68,10 +72,6 @@ public class Spitter {
 
 	public String getPassword() {
 		return password;
-	}
-
-	public Spitter(String username, String password, String firstName, String lastName) {
-		this(null, username, password, firstName, lastName);
 	}
 
 	public void setUsername(String username) {

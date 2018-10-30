@@ -6,14 +6,15 @@ import org.springframework.stereotype.Repository;
 
 import spittr.Spitter;
 
-@Repository
+//@Repository
 public class SimpleSpitterRepository implements SpitterRepository {
 
 	private HashMap<String, Spitter> users = new HashMap<>();
 
 	@Override
-	public void save(Spitter spitter) {
+	public Spitter save(Spitter spitter) {
 		users.put(spitter.getUsername(), spitter);
+		return spitter;
 	}
 
 	@Override

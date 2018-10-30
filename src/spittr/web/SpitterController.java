@@ -45,7 +45,7 @@ public class SpitterController {
 		if (!profilePicture.isEmpty()) {
 			profilePicture.transferTo(new File(spitter.getUsername() + "_" + profilePicture.getOriginalFilename()));
 		} else {
-			throw new MultipartMustNotEmptyException();
+			// throw new MultipartMustNotEmptyException();
 		}
 		spitterRepo.save(spitter);
 		return "redirect:/spitter/" + spitter.getUsername();
@@ -59,7 +59,7 @@ public class SpitterController {
 		}
 		return "profile";
 	}
-	
+
 	@ExceptionHandler(MultipartMustNotEmptyException.class)
 	public String handleMultipartEmpty() {
 		return "multipartEmpty";

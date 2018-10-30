@@ -7,10 +7,16 @@
 	href="<c:url value="/resources/style.css" />">
 </head>
 <body>
-	<h1>Your Profile</h1>
-	<c:out value="${spitter.username}" />
-	<br />
+	<h1>
+		<c:out value="${spitter.username} " />
+		's Profile
+	</h1>
+	Id:
+	<c:out value="${spitter.id}" />
+	<br /> 
+	firstName:
 	<c:out value="${spitter.firstName}" />
-	<c:out value="${spitter.lastName}" />
+	<br />
+	lastName:<c:out value="${spitter.lastName}" />
 </body>
 </html>

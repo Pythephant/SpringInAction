@@ -12,8 +12,8 @@ public class Spittle {
 	private Double latitude;
 	private Double longitude;
 
-	public Spittle(String message, Date time, Double latitude, Double longtidue) {
-		this.id = null;
+	public Spittle(Long id, String message, Date time, Double latitude, Double longtidue) {
+		this.id = id;
 		this.message = message;
 		this.time = time;
 		this.latitude = latitude;
@@ -21,7 +21,7 @@ public class Spittle {
 	}
 
 	public Spittle(String message, Date time) {
-		this(message, time, null, null);
+		this(null, message, time, null, null);
 	}
 
 	// constructor for test use , input the id field from 0 to max;
