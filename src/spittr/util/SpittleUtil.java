@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import spittr.Spittle;
+import spittr.domain.Spittle;
 
 public class SpittleUtil {
 	public static List<Spittle> createTestSpittle(long max, int count) {

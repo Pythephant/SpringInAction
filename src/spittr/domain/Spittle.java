@@ -1,15 +1,25 @@
-package spittr;
+package spittr.domain;
 
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+@Entity
 public class Spittle {
-	private final Long id;
-	private final String message;
-	private final Date time;
+	@Id
+	private  Long id;
+	@Column(name = "message")
+	private  String message;
+	@Column(name = "spitime")
+	private  Date time;
+	@Column(name = "latitude")
 	private Double latitude;
+	@Column(name = "longitude")
 	private Double longitude;
 
 	public Spittle(Long id, String message, Date time, Double latitude, Double longtidue) {
@@ -31,6 +41,10 @@ public class Spittle {
 		this.time = time;
 	}
 
+	public Spittle() {
+		
+	}
+	
 	public Long getId() {
 		return id;
 	}

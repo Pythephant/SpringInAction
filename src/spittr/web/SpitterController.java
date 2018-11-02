@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
-import spittr.Spitter;
 import spittr.data.SpitterRepository;
+import spittr.domain.Spitter;
 
 @Controller
 @RequestMapping("/spitter")
