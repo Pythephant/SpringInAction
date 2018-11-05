@@ -25,7 +25,7 @@ public class SpittlesControllerTest {
 		// the SpittleList
 		List<Spittle> expectedSpittleList = createSpittleList(20);
 		SpittleRepository mockRepository = Mockito.mock(SpittleRepository.class);
-		Mockito.when(mockRepository.findSpittles(Long.MAX_VALUE, 20)).thenReturn(expectedSpittleList);
+		Mockito.when(mockRepository.findSpittles()).thenReturn(expectedSpittleList);
 
 		SpittleController controller = new SpittleController(mockRepository);
 		MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller)
@@ -43,7 +43,7 @@ public class SpittlesControllerTest {
 	public void showPagedSpittles() throws Exception {
 		List<Spittle> expectedList = createSpittleList(50);
 		SpittleRepository mockSpitlleRepo = Mockito.mock(SpittleRepository.class);
-		Mockito.when(mockSpitlleRepo.findSpittles(239800, 50)).thenReturn(expectedList);
+		Mockito.when(mockSpitlleRepo.findSpittles()).thenReturn(expectedList);
 
 		SpittleController controller = new SpittleController(mockSpitlleRepo);
 		MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller)

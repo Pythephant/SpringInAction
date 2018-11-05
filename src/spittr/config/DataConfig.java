@@ -146,10 +146,31 @@ public class DataConfig {
 	// }
 
 	@Bean
-	  public JpaTransactionManager transactionManager() {
-	    return new JpaTransactionManager(); // does this need an emf???
-	  }
-	
+	public JpaTransactionManager transactionManager() {
+		return new JpaTransactionManager();
+	}
+
+	@Bean
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource,
+			JpaVendorAdapter jpaVendorAdapter) {
+		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
+		emf.setDataSource(dataSource);
+		emf.setJpaVendorAdapter(jpaVendorAdapter);
+		emf.setPackagesToScan("spittr.domain");
+		return emf;
+	}
+
+	@Bean
+	public JpaVendorAdapter jpaVendorAdapter() {
+		HibernateJpaVendorAdapter adaper = new HibernateJpaVendorAdapter();
+		adaper.setDatabasePlatform("MYSQL");
+		adaper.setShowSql(true);
+		adaper.setGenerateDdl(false);
+		adaper.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+
+		return adaper;
+	}
+
 	// configure the exception mapping to the Spring SQLException hierarchy
 	@Bean
 	public BeanPostProcessor persistenceTranslation() {
