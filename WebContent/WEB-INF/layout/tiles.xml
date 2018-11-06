@@ -30,12 +30,20 @@
 
 	<definition name="spittle" extends="base">
 		<put-attribute name="body"
-			value="/WEB-INF/views/spittle.jsp"/>
-	
+			value="/WEB-INF/views/spittle.jsp" />
+
 	</definition>
+	<definition name="login" extends="base">
+		<put-attribute name="body"
+			value="/WEB-INF/views/login.jsp"></put-attribute>
+	</definition>
+<!-- 	<definition name="logout" extends="base">
+		<put-attribute name="logout"
+			value="/WEB-INF/views/home.jsp"></put-attribute>
+	</definition> -->
 	<definition name="multipartEmpty" extends="base">
 		<put-attribute name="body"
-			value="/WEB-INF/views/error_multipartEmpty.jsp"/>
-	
+			value="/WEB-INF/views/error_multipartEmpty.jsp" />
+
 	</definition>
 </tiles-definitions>

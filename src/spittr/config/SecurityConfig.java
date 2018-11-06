@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -19,9 +20,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.formLogin().and().logout().logoutSuccessUrl("/").and().authorizeRequests().antMatchers("/spitter/**")
-				.access("hasRole(USER)").antMatchers(HttpMethod.POST, "/spittles").hasRole("USER").anyRequest()
-				.permitAll().and().requiresChannel().antMatchers("/spitter/registerForm").requiresSecure();
+		// this logoutRequestMatcher is required because ,CSRF is include in the page
+		// and this required the logout to be POST, or disable the csrf, or add the URL
+		// specifically
+		http.formLogin().loginPage("/login").and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutSuccessUrl("/").and().rememberMe().tokenValiditySeconds(60).and().authorizeRequests()
+				.antMatchers("/spittles/**").hasRole("USER").anyRequest().permitAll();
 	}
 
 	@Override
