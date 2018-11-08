@@ -1,2 +1,2 @@
 <br />
-Copyright &copy; Craig Walls
+Copyright &copy; Jason Wu

@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// specifically
 		http.formLogin().loginPage("/login").and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.logoutSuccessUrl("/").and().rememberMe().tokenValiditySeconds(60).and().authorizeRequests()
-				.antMatchers("/spittles/**").hasRole("USER").anyRequest().permitAll();
+				.antMatchers("/spittles/*").hasRole("USER").anyRequest().permitAll();
 	}
 
 	@Override

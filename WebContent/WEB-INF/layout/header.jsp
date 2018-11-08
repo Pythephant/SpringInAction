@@ -10,6 +10,7 @@
 <a method="POST" href="<s:url value="/logout" />">Logout </a>
 
 <security:authorize access="isAuthenticated()">
-	|    Hi~
-	<security:authentication property="principal.username" />
+	<security:authentication property="principal.username" var="username" />
+	|    Hi~ <a href="<c:url value="/spitter/${username }" />">${username }
+	</a>
 </security:authorize>
