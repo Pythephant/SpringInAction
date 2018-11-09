@@ -1,5 +1,7 @@
 package spittr.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.IndexColumn;
 
 @Entity
-public class Spitter {
+public class Spitter implements Serializable {
+	//using for the serializable for WebService in bytes message
+	static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "id")

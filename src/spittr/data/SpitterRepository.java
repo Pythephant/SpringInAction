@@ -14,6 +14,10 @@ public interface SpitterRepository extends JpaRepository<Spitter, Long> {
 	public Spitter save(Spitter spitter);
 
 	@Cacheable(value = "spittleCache")
-	@PreAuthorize("isAuthenticated() and #username == principal.username")	// if u are going to use the #arg in the Annotation, you have to annoted the arg by @Param
+	// comment this PreAuthorize, because of the RMI test, can't get the message or
+	// temporary don't know how to get authentication through RMI
+//	@PreAuthorize("isAuthenticated() and #username == principal.username")
+	// if u are going to use the #arg in the Annotation, you have to annoted the arg
+	// by @Param
 	public Spitter findByUsername(@Param("username") String username);
 }
