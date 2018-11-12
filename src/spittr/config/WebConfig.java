@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.remoting.caucho.HessianServiceExporter;
 import org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter;
 import org.springframework.remoting.rmi.RmiServiceExporter;
 import org.springframework.web.multipart.MultipartResolver;
@@ -41,6 +42,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	// return resolver;
 	// }
 
+	// if you are going to use the HttpInvokerExporter and set the HandlerMapping to
+	// map the Remote Service handler to use the Service, *** then you must shut
+	// down the default Handler mappings
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
@@ -85,14 +89,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	}
 
 	// // Rmi : configure the WebService
-	 @Bean
-	 public RmiServiceExporter rmiExporter(SpittrService spittrService) {
-	 RmiServiceExporter rmiExporter = new RmiServiceExporter();
-	 rmiExporter.setService(spittrService);
-	 rmiExporter.setServiceName("SpittrService");
-	 rmiExporter.setServiceInterface(SpittrService.class);
-	 return rmiExporter;
-	 }
+//	 @Bean
+//	 public RmiServiceExporter rmiExporter(SpittrService spittrService) {
+//	 RmiServiceExporter rmiExporter = new RmiServiceExporter();
+//	 rmiExporter.setService(spittrService);
+//	 rmiExporter.setServiceName("SpittrService");
+//	 rmiExporter.setServiceInterface(SpittrService.class);
+//	 return rmiExporter;
+//	 }
 
 	// HTTP invoker Configure
 	@Bean

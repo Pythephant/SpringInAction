@@ -13,7 +13,7 @@ import spittr.domain.Spittle;
 
 public interface SpittleRepository extends JpaRepository<Spittle, Long> {
 	@Query(value = "select * from Spittle order by spitime desc", nativeQuery = true)
-//	@PostFilter("!isAuthenticated() || filterObject.username == principal.username")
+	@PostFilter("!isAuthenticated() || filterObject.username == principal.username")
 	public List<Spittle> findSpittles();
 
 	@Cacheable(value = "spittleCache")
